@@ -69,6 +69,8 @@ function comparisonToMongo(key, value) {
             value[op] = array
         } else if (op == '!=') {
             value = { '$ne': array[0] }
+        } else if (value.charAt(0) == '/' && value.charAt(value.length-1) == '/') {
+            value = { '$regex': array[0]}
         } else {
             value = array[0]
         }
